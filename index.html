@@ -52,6 +52,13 @@
                                                    id="name_txt">
                                         </div>
                                     </div>
+                                    <div class="form-group row">
+                                        <label for="email_txt" class="col-sm-4 col-form-label">Email :</label>
+                                        <div class="col-sm-8">
+                                            <input type="email" placeholder="Email" class="form-control"
+                                                   id="email_txt">
+                                        </div>
+                                    </div>
                                     <div id="ticket_number" class="form-group row">
                                         <label for="ticket_number_txt" class="col-sm-4 col-form-label">Ticket number
                                             :</label>
@@ -412,62 +419,76 @@
                                         <div class="col-sm-2">
                                             <input id="check1" type="checkbox" class="form-check-input"
                                                    name="check"
-                                                   value="What is the device model that you have tested with?">
+                                                   value="What is the device model that you have tested with?"
+                                                   onchange="enableCheck(this.id)">
                                         </div>
                                         <label for="check1" class="col-sm-6  col-form-label">What is the device model that you have tested
                                             with?</label>
+                                        <input type="text" placeholder="" class="form-control col-sm-4" id="check1_text" disabled>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-2">
                                             <input id="check2" type="checkbox" class="form-check-input"
                                                    name="check"
-                                                   value="What is the Firmware version currently installed on the device? If not on latest firmware version, please upgrade to latest firmware version.">
+                                                   value="What is the Firmware version currently installed on the device? If not on latest firmware version, please upgrade to latest firmware version."
+                                                   onchange="enableCheck(this.id)">
                                         </div>
                                         <label for="check2" class="col-sm-6  col-form-label">What is the Firmware version currently installed on the device? If not on latest firmware version, please upgrade to latest firmware version. </label>
+                                        <input type="text" placeholder="" class="form-control col-sm-4" id="check2_text" disabled>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-2">
                                             <input id="check3" type="checkbox" class="form-check-input"
                                                    name="check"
-                                                   value="Do you see the same behavior with other device models? If not, please test with other device model for confirmation. ">
+                                                   value="Do you see the same behavior with other device models? If not, please test with other device model for confirmation. "
+                                                   onchange="enableCheck(this.id)">
                                         </div>
                                         <label for="check3" class="col-sm-6 col-form-label">Do you see the same behavior with other device models? If not, please test with other device model for confirmation. </label>
+                                        <input type="text" placeholder="" class="form-control col-sm-4" id="check3_text" disabled>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-2">
                                             <input id="check4" type="checkbox" class="form-check-input"
                                                    name="check"
-                                                   value="Were you able to consistently reproduce the issue? If so, please provide the complete reproduction steps.">
+                                                   value="Were you able to consistently reproduce the issue? If so, please provide the complete reproduction steps."
+                                                   onchange="enableCheck(this.id)">
                                         </div>
                                         <label for="check4" class="col-sm-6 col-form-label">Were you able to consistently reproduce the issue? If so, please provide the complete reproduction steps.
                                         </label>
+                                        <input type="text" placeholder="" class="form-control col-sm-4" id="check4_text" disabled>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-2">
                                             <input id="check5" type="checkbox" class="form-check-input"
                                                    name="check"
-                                                   value="Please provide the screenshot of the error message displayed.">
+                                                   value="Please provide the screenshot of the error message displayed."
+                                                   onchange="enableCheck(this.id)">
                                         </div>
                                         <label for="check5" class="col-sm-6 col-form-label">Please provide the screenshot of the error message displayed.
                                         </label>
+                                        <input type="text" placeholder="" class="form-control col-sm-4" id="check5_text" disabled>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-2">
                                             <input id="check6" type="checkbox" class="form-check-input"
                                                    name="check"
-                                                   value="Please provide the logs (JDP logs or log information from HP Command Center)">
+                                                   value="Please provide the logs (JDP logs or log information from HP Command Center)"
+                                                   onchange="enableCheck(this.id)">
                                         </div>
                                         <label for="check6" class="col-sm-6 col-form-label">Please provide the logs (JDP logs or log information from HP Command Center)
                                         </label>
+                                        <input type="text" placeholder="" class="form-control col-sm-4" id="check6_text" disabled>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-2">
                                             <input id="check7" type="checkbox" class="form-check-input"
                                                    name="check"
-                                                   value="Have you followed the deployment guide? Please confirm if all the checklist items were implemented">
+                                                   value="Have you followed the deployment guide? Please confirm if all the checklist items were implemented"
+                                                   onchange="enableCheck(this.id)">
                                         </div>
                                         <label for="check7" class="col-sm-6 col-form-label">Have you followed the deployment guide? Please confirm if all the checklist items were implemented
                                         </label>
+                                        <input type="text" placeholder="" class="form-control col-sm-4" id="check7_text" disabled>
                                     </div>
                                 </div>
                                 <div class="col-6" id="secondCol">
@@ -647,20 +668,30 @@
 
 <script>
 
+    function enableCheck(valueid){
+        if (document.getElementById(valueid).checked == true) {
+            document.getElementById(valueid + "_text").disabled=false;
+        }else{
+            document.getElementById(valueid + "_text").disabled=true;
+            document.getElementById(valueid + "_text").value=null;
+        }
+    }
+
     function keyword() {
         if (document.getElementById("ticket_number_txt").value.indexOf("#") != 0) {
             document.getElementById("ticket_number_txt").value = "#" + document.getElementById("ticket_number_txt").value
         }
     }
-
+    i=0;
     function addCheck() {
         var newcontent = document.createElement('div')
         newcontent.innerHTML = "<div class=\"form-group row\">\n" +
-
-            "                                        <label for=\"checkX\" class=\"col-sm-4  col-form-label\">New question</label>\n" +
-            "                                        <input type=\"text\" placeholder=\"\" class=\"form-control col-sm-6\" >\n" +
-            "                                    </div>"
+            "                                        <label for='checkX"+i+"' class=\"col-sm-4  col-form-label\">New question</label>\n" +
+            "                                        <input id='checkX"+i+"' type=\"text\" placeholder=\"Question\" class=\"form-control col-sm-4\" >\n" +
+            "                                        <input id='checkX"+i+"_A' type=\"text\" placeholder=\"Answer\" class=\"form-control col-sm-4\" >"
+            "                                    </div>"+
         document.getElementById("secondCol").appendChild(newcontent)
+        i=i+1;
 
     }
 
@@ -689,7 +720,7 @@
     function setTitle() {
         let case_title = ""
 
-        case_title += "Workpath|" +document.getElementById("ticket_number_txt").value+"|"
+        case_title += document.getElementById("email_txt").value+"|"+"Workpath|" +document.getElementById("ticket_number_txt").value+"|"
             +document.getElementById("country").value + "|" + document.getElementById("solution_name_txt").value
 
         $('#template_title').html(case_title)
@@ -704,13 +735,13 @@
             "In the meantime, can you provide us with the following information. "+
             "<br/><br/>";
         $("#checkboxinput1").find("input:checked").each(function (i, ob) {
-            template_content_value += "⦿ " + $(ob).val() + "<br><br>";
+            template_content_value += "⦿ " + $(ob).val()  +" : " + document.getElementById($(ob).attr('id') + "_text").value+ "<br><br>";
         });
-        $("#secondCol").find("input:text").each(function (i, ob) {
-            if($(ob).val().length>0) {
-                template_content_value += "⦿ " + $(ob).val() + "<br><br>";
-            }
-        });
+
+        for(let j=0;j<i;j++){
+
+            template_content_value += "⦿ " +document.getElementById("checkX"+j).value+" : " + document.getElementById("checkX"+j+"_A").value+ "<br><br>";
+        }
         template_content_value +="We will provide you with more information soon. <br/>" +
         "kind regards"
         $('#template_data').html(template_content_value)
