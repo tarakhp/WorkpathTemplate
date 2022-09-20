@@ -412,39 +412,63 @@
                                         <div class="col-sm-2">
                                             <input id="check1" type="checkbox" class="form-check-input"
                                                    name="check"
-                                                   value="Does the problem occur with different setups. Does it affect one or more users.">
+                                                   value="What is the device model that you have tested with?">
                                         </div>
-                                        <label for="check1" class="col-sm-6  col-form-label">Does the problem occur with
-                                            different setups. Does it affect one or more users. </label>
+                                        <label for="check1" class="col-sm-6  col-form-label">What is the device model that you have tested
+                                            with?</label>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-2">
                                             <input id="check2" type="checkbox" class="form-check-input"
                                                    name="check"
-                                                   value="Does the problem occur during the initial installation.">
+                                                   value="What is the Firmware version currently installed on the device? If not on latest firmware version, please upgrade to latest firmware version.">
                                         </div>
-                                        <label for="check2" class="col-sm-6  col-form-label">Does the problem occur
-                                            during the initial installation. </label>
+                                        <label for="check2" class="col-sm-6  col-form-label">What is the Firmware version currently installed on the device? If not on latest firmware version, please upgrade to latest firmware version. </label>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-2">
                                             <input id="check3" type="checkbox" class="form-check-input"
                                                    name="check"
-                                                   value="If it occurs on multiple setups, it is the same printer model. ">
+                                                   value="Do you see the same behavior with other device models? If not, please test with other device model for confirmation. ">
                                         </div>
-                                        <label for="check3" class="col-sm-6 col-form-label">If it occurs on multiple
-                                            setups, it is the same printer model. </label>
+                                        <label for="check3" class="col-sm-6 col-form-label">Do you see the same behavior with other device models? If not, please test with other device model for confirmation. </label>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-2">
                                             <input id="check4" type="checkbox" class="form-check-input"
                                                    name="check"
-                                                   value="Is there any other app installed that's facing a similar error 45.">
+                                                   value="Were you able to consistently reproduce the issue? If so, please provide the complete reproduction steps.">
                                         </div>
-                                        <label for="check4" class="col-sm-6 col-form-label">Is there any other app
-                                            installed that's facing a similar error 45.</label>
+                                        <label for="check4" class="col-sm-6 col-form-label">Were you able to consistently reproduce the issue? If so, please provide the complete reproduction steps.
+                                        </label>
                                     </div>
-
+                                    <div class="form-group row">
+                                        <div class="col-sm-2">
+                                            <input id="check5" type="checkbox" class="form-check-input"
+                                                   name="check"
+                                                   value="Please provide the screenshot of the error message displayed.">
+                                        </div>
+                                        <label for="check5" class="col-sm-6 col-form-label">Please provide the screenshot of the error message displayed.
+                                        </label>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-2">
+                                            <input id="check6" type="checkbox" class="form-check-input"
+                                                   name="check"
+                                                   value="Please provide the logs (JDP logs or log information from HP Command Center)">
+                                        </div>
+                                        <label for="check6" class="col-sm-6 col-form-label">Please provide the logs (JDP logs or log information from HP Command Center)
+                                        </label>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-2">
+                                            <input id="check7" type="checkbox" class="form-check-input"
+                                                   name="check"
+                                                   value="Have you followed the deployment guide? Please confirm if all the checklist items were implemented">
+                                        </div>
+                                        <label for="check7" class="col-sm-6 col-form-label">Have you followed the deployment guide? Please confirm if all the checklist items were implemented
+                                        </label>
+                                    </div>
                                 </div>
                                 <div class="col-6" id="secondCol">
                                     <button onclick="addCheck()"
